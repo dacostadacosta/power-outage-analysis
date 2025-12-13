@@ -603,30 +603,31 @@ The observed statistic is 3060.5 minutes with a p-value of 0.0015. Since the p-v
 
 ## Framing a Prediction Problem
 
-Our prediction task is a regression problem, where the aim is to predict the duration of a power outage (`OUTAGE.DURATION (mins)`). Naturally this will be our target to bring us toward the goal stated in the introductoion and furthermore we will have a lot of features available at the time of prediction.
+Our prediction task is a regression problem, where the aim is to predict the duration of a power outage (`OUTAGE.DURATION (mins)`). Naturally, this will be our target to bring us toward the goal stated in the introduction, and furthermore we will have a lot of features available at the time of prediction.
 
-We evaluate model performance using mean absolute error (MAE) mainly although we also consier RSME and R^2. MAE is appropriate here because it is easy to interpret in the same units as the response variable and is less sensitive to outliers than mean squared error, which is important given the distribution of duration is very skewed.
+We evaluate model performance using mean absolute error (MAE) mainly, although we also consider RMSE and R². MAE is appropriate here because it is easy to interpret in the same units as the response variable and is less sensitive to outliers than mean squared error, which is important given that the distribution of outage duration is very skewed.
 
 ## Baseline Model
 
-We begin with a linear regression baseline model to predict outage duration (OUTAGE.DURATION (mins)) using two features.
+We begin with a linear regression baseline model to predict outage duration (`OUTAGE.DURATION (mins)`) using two features.
 
-Features used: CLIMATE.REGION which nominal categorical feature and MONTH as quantitative numeric feature
+**Features used:**  
+`CLIMATE.REGION`, which is a nominal categorical feature, and `MONTH`, which is a quantitative numeric feature.
 
-Encoding:
-CLIMATE.REGION is encoded using one-hot encoding to convert categories into binary indicator variables. MONTH is passed through unchanged as a numeric feature in case there is some sort of seasonal trend that might appear, say perhaps outages increase throughout the year. Transformations are applied using a ColumnTransformer.
+**Encoding:**  
+`CLIMATE.REGION` is encoded using one-hot encoding to convert categories into binary indicator variables. `MONTH` is passed through unchanged as a numeric feature in case there is some sort of seasonal trend that might appear, for example outages increasing throughout the year. Transformations are applied using a `ColumnTransformer`.
 
-Data preprocessing decisions:
-To reduce the influence of extreme outliers, the top 2% of outage durations were trimmed before training. There were 2-3 extremely long outage durations, given the rarity, our model would not generalize well to predict the outliers but they would also skew our model. 
+**Data preprocessing decisions:**  
+To reduce the influence of extreme outliers, the top 2% of outage durations were trimmed before training. There were 2–3 extremely long outage durations; given their rarity, our model would not generalize well to predict these outliers, and they would also skew the model.
 
-Performance (test set):
+**Performance (test set):**  
+- RMSE: 3134.4 minutes  
+- MAE: 2041.1 minutes  
+- R²: 0.035
 
-RMSE: 3134.4 minutes
-MAE: 2041.1 minutes
-R²: 0.035
+**Evaluation:**  
+This model is not good in terms of prediction. It explains very little variance in outage duration and has large prediction errors. This is as expected, since the only feature really adding some predictive power is the region; however, within each region the variance of outage duration is high. Hence, we need to add more features to try and lower our errors and improve correlation.
 
-Evaluation:
-This model is not good in terms of prediction. It explains very little variance in outage duration and has large prediction errors. This is as expected since the only feature really adding some predictive power is the region, however in each region the variance of outage duration is high. Hemce we need to add more feature to try and lower our errors and improve correlation.
 
 
 ## Final Model
