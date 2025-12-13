@@ -488,7 +488,7 @@ CAUSE.CATEGORY reflects the primary reason for an outage, it is natural to assum
 
 ANOMALY.LEVEL (numeric) was transformed using its absolute value to capture the severity of abnormal climate conditions regardless of direction. This might help our model by adding more context to the climate since anything particularly abnormaly for a region might cause more damage or slower reponse given its unexpectness.
 
-HOUR.TYPE o(working vs. off hours) we added to the data frame t0 captures operational constraints, as outages starting outside standard working hours may have delayed responses. This feature was engineered by extracting the hour from the outage start time and binning it into working hours (8–18) versus off hours, then treated as a categorical variable.
+HOUR.TYPE (working vs. off hours) we added to the data frame t0 captures operational constraints, as outages starting outside standard working hours may have delayed responses. This feature was engineered by extracting the hour from the outage start time and binning it into working hours (8–18) versus off hours, then treated as a categorical variable.
 
 Our final model is a Random Forest Regressor, selected to capture the non-linear relationships which is present in our data.
 
