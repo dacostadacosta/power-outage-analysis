@@ -429,7 +429,24 @@ This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DET
 
 
 ## Hypothesis Testing
-(text goes here)
+
+Null Hypothesis:
+Outage duration has the same distribution across all climate regions.
+
+Alternative Hypothesis:
+At least one climate region has a different outage duration distribution.
+
+Test Statistic:
+The difference between the maximum and minimum median outage duration across climate regions. The median is used because outage duration is highly skewed.
+
+Significance Level:
+α = 0.05.
+
+Method:
+We use a permutation test by shuffling climate region labels to approximate the null distribution. This avoids parametric assumptions and directly tests whether climate region is associated with outage duration.
+
+Results and Conclusion:
+The observed statistic is 3060.5 minutes with a p-value of 0.0015. Since this p-value is below 0.05, we reject the null hypothesis. This suggests that outage duration differs across climate regions, though this result reflects association rather than causation.
 
 ## Framing a Prediction Problem
 (text goes here)
