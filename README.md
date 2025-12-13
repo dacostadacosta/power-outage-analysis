@@ -437,19 +437,24 @@ Alternative Hypothesis:
 At least one climate region has a different outage duration distribution.
 
 Test Statistic:
-The difference between the maximum and minimum median outage duration across climate regions. The median is used because outage duration is highly skewed.
+The difference between the maximum and minimum median outage duration across climate regions. The median is used since outage duration is highly skewed.
 
 Significance Level:
 α = 0.05.
 
 Method:
-We use a permutation test by shuffling climate region labels to approximate the null distribution. This avoids parametric assumptions and directly tests whether climate region is associated with outage duration.
+We use a permutation test by shuffling climate region labels to approximate the null distribution. This tests whether climate region is associated with outage duration.
 
 Results and Conclusion:
-The observed statistic is 3060.5 minutes with a p-value of 0.0015. Since this p-value is below 0.05, we reject the null hypothesis. This suggests that outage duration differs across climate regions, though this result reflects association rather than causation.
+The observed statistic is 3060.5 minutes with a p-value of 0.0015. Since the p-value is below 0.05, we reject the null hypothesis in favor of the alternate. This suggests that outage duration differs across climate regions, though this result reflects association only.
 
 ## Framing a Prediction Problem
-(text goes here)
+
+Our prediction task is a regression problem, where the goal is to predict the duration of a power outage, measured in minutes (OUTAGE.DURATION (mins)). This response variable is central to the project because outage duration directly reflects the severity and impact of an outage, and accurately predicting it could help with planning, response, and resource allocation.
+
+We evaluate model performance using mean absolute error (MAE). MAE is appropriate here because it is easy to interpret in the same units as the response variable (minutes) and is less sensitive to extreme outliers than mean squared error, which is important given the highly skewed distribution of outage durations.
+
+At the time of prediction, only information known at or before the start of the outage is used. This includes features such as CLIMATE.REGION, CLIMATE.CATEGORY, ANOMALY.LEVEL (numeric), CAUSE.CATEGORY, geographic indicators like U.S._STATE, and contextual variables such as population. Variables that depend on the progression or resolution of the outage, including restoration times or the outage duration itself, are excluded to avoid data leakage.
 
 ## Baseline Model
 (text goes here)
