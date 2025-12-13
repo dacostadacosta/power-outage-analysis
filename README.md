@@ -477,7 +477,17 @@ This model is not good in terms of prediction. It explains very little variance 
 
 
 ## Final Model
-(text goes here)
+
+We added 5 new features to the model:
+U.S._STATE captures state-level differences in grid infrastructure, emergency response, or other state level influences that can affect restoration time. It is a categorical variable we use one-hot encoding so the model can learn separate effects for each state.
+
+CLIMATE.CATEGORY represents broad weather regimes that influence the types of events occuring at the outage which may be related to the repsonse time aswell as could be related to the cause of the outage itself. This variable is used as a categorical feature and one-hot encoded.
+
+CAUSE.CATEGORY reflects the primary reason for an outage, it is natural to assume that different causes mught lead to different duratoins. For example an outage caused by a simple computer glitch likley is going to be shorted then one by a hurricane or natural disaster. It is included as a categorical feature and one-hot encoded.
+
+ANOMALY.LEVEL (numeric) was transformed using its absolute value to capture the severity of abnormal climate conditions regardless of direction. This might help our model by adding more context to the climate since anything particularly abnormaly for a region might cause more damage or slower reponse given its unexpectness.
+
+HOUR.TYPE o(working vs. off hours) we added to the data frame t0 captures operational constraints, as outages starting outside standard working hours may have delayed responses. This feature was engineered by extracting the hour from the outage start time and binning it into working hours (8–18) versus off hours, then treated as a categorical variable.
 
 ## Fairness Analysis
 (text goes here)
