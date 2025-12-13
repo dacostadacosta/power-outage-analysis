@@ -427,7 +427,7 @@ We find strong evidence that missingness depends on CAUSE.CATEGORY, U.S._STATE, 
   frameborder="0">
 </iframe>
 
-This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DETAIL` is missing versus when it is present. Outages with missing cause details tend to be shorter, suggesting that detailed cause information is less likely to be recorded for shorter or less severe outages.
+This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DETAIL` is missing versus when it is present. Outages with missing cause details tend to be shorter hint at the fact detailed cause information is less likely to be recorded for shorter or less severe outages.
 
 
 ## Hypothesis Testing
