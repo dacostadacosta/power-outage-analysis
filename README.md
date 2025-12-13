@@ -388,10 +388,7 @@ Below are the first five rows of the cleaned DataFrame:
   height="600"
   frameborder="0">
 </iframe>
-
-This plot shows the number of recorded major power outages across different climate regions. Outages are concentrated in a small number of regions, suggesting that geography and regional climate patterns may play an important role in where major outages occur.
-
-
+Outages are not evenly distributed across regions, with the Northeast, South, and West have the highest counts. This could mean that regional factors such as climate patterns, infrastructure, etc likely are associated with the frequemcy of outages. This could for example hint that some regions have weaker infrustructer that is perhaps more dated, or the location could get more extreme weather which could cause an outage more often then elsewhere.
 
 
 
