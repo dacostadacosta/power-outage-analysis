@@ -560,15 +560,15 @@ This table summarizes outage duration and customer impact across NERC regions. I
 
 ### NMAR Analysis
 
-It is possible that the column CAUSE.CATEGORY.DETAIL is NMAR. This column records a more specific description of the outage cause, and its missingness likely depends on the detail itself. In particular, outages with vague of minof causes are less likely to have detailed descriptions recorded and might be omitted entirely, while more severe or common events are more likely to include them. Because the probability of missingness depends on the unobserved value of CAUSE.CATEGORY.DETAIL, the missingness mechanism is at least partly not missing at random.
+It is possible that the column `CAUSE.CATEGORY.DETAIL` is NMAR. This column records a more specific description of the outage cause, and its missingness likely depends on the detail itself. In particular, outages with vague or minor causes are less likely to have detailed descriptions recorded and might be omitted entirely, while more severe or common events are more likely to include them. Because the probability of missingness depends on the unobserved value of `CAUSE.CATEGORY.DETAIL`, the missingness mechanism is at least partly not missing at random.
 
-It would be helpful if we could attain infomration about reporting standard and whether or not they are required for certain outage types or in certain states. Then if there was a correlation between this and the missingness it would be MAR. We go on to test this.
+It would be helpful if we could attain information about reporting standards and whether or not detailed cause descriptions are required for certain outage types or in certain states. Then, if there was a correlation between this information and the missingness, the mechanism could be considered MAR. We go on to test this.
 
 ### Missingness Dependency
 
-We tested whether the missingness of CAUSE.CATEGORY.DETAIL depends on other observed variables via permutation tests. For categorical variables, we looked at the distributions of categories when the column is missing versus not missing using total variation distance (TVD). For numerical variables we compared the difference in means between the missing and non-missing groups.
+We tested whether the missingness of `CAUSE.CATEGORY.DETAIL` depends on other observed variables via permutation tests. For categorical variables, we looked at the distributions of categories when the column is missing versus not missing using total variation distance (TVD). For numerical variables, we compared the difference in means between the missing and non-missing groups.
 
-We find strong evidence that missingness depends on CAUSE.CATEGORY, U.S._STATE, and POPULATION since all three tests yield p-values near zero. On the ohter hand there is no statistically significant evidence that missingness depends on PCT_WATER_TOT (%). This suggests that whether cause details are missing is related to outage context and reporting practices likley in each state. As expected it has nothing to do with percentage of water area in that state.
+We find strong evidence that missingness depends on `CAUSE.CATEGORY`, `U.S._STATE`, and `POPULATION`, since all three tests yield p-values near zero. On the other hand, there is no statistically significant evidence that missingness depends on `PCT_WATER_TOT (%)`. This suggests that whether cause details are missing is related to outage context and reporting practices, likely varying by state. As expected, it has nothing to do with the percentage of water area in that state.
 
 <iframe
   src="assets/missingness_outage_duration.html"
@@ -577,7 +577,8 @@ We find strong evidence that missingness depends on CAUSE.CATEGORY, U.S._STATE, 
   frameborder="0">
 </iframe>
 
-This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DETAIL` is missing versus when it is present. Outages with missing cause details tend to be shorter hint at the fact detailed cause information is less likely to be recorded for shorter or less severe outages.
+This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DETAIL` is missing versus when it is present. Outages with missing cause details tend to be shorter, hinting at the fact that detailed cause information is less likely to be recorded for shorter or less severe outages.
+
 
 
 ## Hypothesis Testing
@@ -647,9 +648,7 @@ Our final model is a Random Forest Regressor, selected to capture the non-linear
 Hyperparameters were chosen using grid search with 5-fold cross-validation, optimizing RMSE. The best-performing model used:
 
 n_estimators = 100
-
 max_depth = 10
-
 min_samples_leaf = 5
 
 Interestingly these settings limit tree depth and enforce larger leaf sizes.
@@ -657,9 +656,7 @@ Interestingly these settings limit tree depth and enforce larger leaf sizes.
 Performance (test set):
 
 RMSE: 2666.6 minutes
-
 MAE: 1592.3 minutes
-
 R²: 0.302
 
 WHereas the baseline linear regression model had a test MAE of approximately 2042 minutes and an R² of 0.035. The final model offers a large improvement but we are still a long way from accuratly predicting the outage duration a tasks with a lot of nuance since it is dependent on many variables in and out of the data set.
