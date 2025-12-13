@@ -1,4 +1,4 @@
-# When Will the Power Return?
+# When Will Power Return?
 By Andrew DaCosta
 
 ## Introduction
@@ -450,11 +450,9 @@ The observed statistic is 3060.5 minutes with a p-value of 0.0015. Since the p-v
 
 ## Framing a Prediction Problem
 
-Our prediction task is a regression problem, where the goal is to predict the duration of a power outage, measured in minutes (OUTAGE.DURATION (mins)). This response variable is central to the project because outage duration directly reflects the severity and impact of an outage, and accurately predicting it could help with planning, response, and resource allocation.
+Our prediction task is a regression problem, where the aim is to predict the duration of a power outage (`OUTAGE.DURATION (mins)`). Naturally this will be our target to bring us toward the goal stated in the introductoion and furthermore we will have a lot of features available at the time of prediction.
 
-We evaluate model performance using mean absolute error (MAE). MAE is appropriate here because it is easy to interpret in the same units as the response variable (minutes) and is less sensitive to extreme outliers than mean squared error, which is important given the highly skewed distribution of outage durations.
-
-At the time of prediction, only information known at or before the start of the outage is used. This includes features such as CLIMATE.REGION, CLIMATE.CATEGORY, ANOMALY.LEVEL (numeric), CAUSE.CATEGORY, geographic indicators like U.S._STATE, and contextual variables such as population. Variables that depend on the progression or resolution of the outage, including restoration times or the outage duration itself, are excluded to avoid data leakage.
+We evaluate model performance using mean absolute error (MAE) mainly although we also consier RSME and R^2. MAE is appropriate here because it is easy to interpret in the same units as the response variable and is less sensitive to outliers than mean squared error, which is important given the distribution of duration is very skewed.
 
 ## Baseline Model
 (text goes here)
