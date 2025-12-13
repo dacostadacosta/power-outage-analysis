@@ -513,4 +513,30 @@ R²: 0.302
 WHereas the baseline linear regression model had a test MAE of approximately 2042 minutes and an R² of 0.035. The final model offers a large improvement but we are still a long way from accuratly predicting the outage duration a tasks with a lot of nuance since it is dependent on many variables in and out of the data set.
 
 ## Fairness Analysis
-(text goes here)
+
+Group X and Group Y:
+
+Group X: Outages that start during working hours
+
+Group Y: Outages that start during off hours
+
+Evaluation Metric:
+We use mean absolute error (MAE), since it measures prediction error in minutes and is consistent with how model performance was evaluated elsewhere in the project.
+
+Null Hypothesis:
+The model is fair; its error (MAE) is the same for outages that start during working hours and off hours, and any observed difference is due to random chance.
+
+Alternative Hypothesis:
+The model is unfair; its error (MAE) is higher for off-hour outages than for working-hour outages.
+
+Test Statistic:
+The difference in MAE between off-hour outages and working-hour outages.
+
+Significance Level:
+We use a significance level of α = 0.05.
+
+Method:
+We perform a permutation test by keeping the trained model fixed, shuffling the HOUR_TYPE labels, recomputing the MAE difference each time, and comparing the observed difference to the resulting null distribution.
+
+Results and Conclusion:
+The observed difference in MAE between off-hour and working-hour outages is approximately 9.6 minutes, with a p-value of 0.476. Since this p-value is well above the significance level, we fail to reject the null hypothesis. There is no statistical evidence that the model performs worse for outages occurring during off hours.
