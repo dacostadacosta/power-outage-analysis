@@ -52,8 +52,7 @@ Since our aim later on is to explore what correlates with the length of an outag
 ### Head of Cleaned DataFrame
 
 Below are the first five rows of the cleaned DataFrame:
-
-
+<div style="overflow-x: auto; max-width: 100%;">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -378,6 +377,7 @@ Below are the first five rows of the cleaned DataFrame:
     </tr>
   </tbody>
 </table>
+</div>
 
 
 
