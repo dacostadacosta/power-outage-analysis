@@ -420,6 +420,16 @@ We tested whether the missingness of CAUSE.CATEGORY.DETAIL depends on other obse
 
 We find strong evidence that missingness depends on CAUSE.CATEGORY, U.S._STATE, and POPULATION since all three tests yield p-values near zero. On the ohter hand there is no statistically significant evidence that missingness depends on PCT_WATER_TOT (%). This suggests that whether cause details are missing is related to outage context and reporting practices likley in each state. As expected it has nothing to do with percentage of water area in that state.
 
+<iframe
+  src="assets/missingness_outage_duration.html"
+  width="800"
+  height="600"
+  frameborder="0">
+</iframe>
+
+This plot compares the distribution of outage durations when `CAUSE.CATEGORY.DETAIL` is missing versus when it is present. Outages with missing cause details tend to be shorter, suggesting that detailed cause information is less likely to be recorded for shorter or less severe outages.
+
+
 ## Hypothesis Testing
 (text goes here)
 
