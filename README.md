@@ -401,6 +401,158 @@ Outages are not evenly distributed across regions, with the Northeast, South, an
 
 This plot compares outage duration across different cause categories. While most outage durations are relatively short, certain causes show much larger variability and longer extreme durations, showing that the underlying cause of an outage is related to how long it takes to restore power in some cases.
 
+### Interesting Aggregates
+
+<div style="overflow-x: auto; max-width: 100%;">
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>NERC.REGION</th>
+      <th colspan="3" halign="left">OUTAGE.DURATION (mins)</th>
+      <th colspan="3" halign="left">CUSTOMERS.AFFECTED</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>median</th>
+      <th>mean</th>
+      <th>count</th>
+      <th>median</th>
+      <th>mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ECAR</td>
+      <td>32</td>
+      <td>5475.0</td>
+      <td>5603.312500</td>
+      <td>32</td>
+      <td>142500.0</td>
+      <td>256354.187500</td>
+    </tr>
+    <tr>
+      <td>FRCC</td>
+      <td>43</td>
+      <td>1419.0</td>
+      <td>4271.116279</td>
+      <td>44</td>
+      <td>51982.5</td>
+      <td>289778.181818</td>
+    </tr>
+    <tr>
+      <td>RFC</td>
+      <td>416</td>
+      <td>1672.0</td>
+      <td>3477.956731</td>
+      <td>349</td>
+      <td>95000.0</td>
+      <td>127894.232092</td>
+    </tr>
+    <tr>
+      <td>NPCC</td>
+      <td>147</td>
+      <td>494.0</td>
+      <td>3262.170068</td>
+      <td>108</td>
+      <td>50371.0</td>
+      <td>108726.037037</td>
+    </tr>
+    <tr>
+      <td>TRE</td>
+      <td>108</td>
+      <td>1095.0</td>
+      <td>2960.574074</td>
+      <td>81</td>
+      <td>96000.0</td>
+      <td>226468.654321</td>
+    </tr>
+    <tr>
+      <td>MRO</td>
+      <td>44</td>
+      <td>1245.5</td>
+      <td>2933.590909</td>
+      <td>29</td>
+      <td>63000.0</td>
+      <td>88984.965517</td>
+    </tr>
+    <tr>
+      <td>SPP</td>
+      <td>62</td>
+      <td>1134.0</td>
+      <td>2693.774194</td>
+      <td>43</td>
+      <td>57531.0</td>
+      <td>188513.000000</td>
+    </tr>
+    <tr>
+      <td>SERC</td>
+      <td>194</td>
+      <td>747.0</td>
+      <td>1737.989691</td>
+      <td>154</td>
+      <td>70567.5</td>
+      <td>107854.038961</td>
+    </tr>
+    <tr>
+      <td>WECC</td>
+      <td>424</td>
+      <td>219.5</td>
+      <td>1481.490566</td>
+      <td>245</td>
+      <td>32000.0</td>
+      <td>133833.065306</td>
+    </tr>
+    <tr>
+      <td>HI</td>
+      <td>1</td>
+      <td>1367.0</td>
+      <td>1367.000000</td>
+      <td>1</td>
+      <td>294000.0</td>
+      <td>294000.000000</td>
+    </tr>
+    <tr>
+      <td>HECO</td>
+      <td>3</td>
+      <td>543.0</td>
+      <td>895.333333</td>
+      <td>3</td>
+      <td>59886.0</td>
+      <td>126728.666667</td>
+    </tr>
+    <tr>
+      <td>FRCC, SERC</td>
+      <td>1</td>
+      <td>372.0</td>
+      <td>372.000000</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>PR</td>
+      <td>1</td>
+      <td>174.0</td>
+      <td>174.000000</td>
+      <td>1</td>
+      <td>62000.0</td>
+      <td>62000.000000</td>
+    </tr>
+    <tr>
+      <td>ASCC</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>14273.0</td>
+      <td>14273.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+This table summarizes outage duration and customer impact across NERC regions. It shows clear differences in the severity of outages across regions, which tells us how grid structure and regional characteristics are related to outage outcomes.
 
 
 
