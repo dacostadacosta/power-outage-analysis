@@ -479,6 +479,7 @@ This model is not good in terms of prediction. It explains very little variance 
 ## Final Model
 
 We added 5 new features to the model:
+
 U.S._STATE captures state-level differences in grid infrastructure, emergency response, or other state level influences that can affect restoration time. It is a categorical variable we use one-hot encoding so the model can learn separate effects for each state.
 
 CLIMATE.CATEGORY represents broad weather regimes that influence the types of events occuring at the outage which may be related to the repsonse time aswell as could be related to the cause of the outage itself. This variable is used as a categorical feature and one-hot encoded.
@@ -488,6 +489,28 @@ CAUSE.CATEGORY reflects the primary reason for an outage, it is natural to assum
 ANOMALY.LEVEL (numeric) was transformed using its absolute value to capture the severity of abnormal climate conditions regardless of direction. This might help our model by adding more context to the climate since anything particularly abnormaly for a region might cause more damage or slower reponse given its unexpectness.
 
 HOUR.TYPE o(working vs. off hours) we added to the data frame t0 captures operational constraints, as outages starting outside standard working hours may have delayed responses. This feature was engineered by extracting the hour from the outage start time and binning it into working hours (8–18) versus off hours, then treated as a categorical variable.
+
+Our final model is a Random Forest Regressor, selected to capture the non-linear relationships which is present in our data.
+
+Hyperparameters were chosen using grid search with 5-fold cross-validation, optimizing RMSE. The best-performing model used:
+
+n_estimators = 100
+
+max_depth = 10
+
+min_samples_leaf = 5
+
+Interestingly these settings limit tree depth and enforce larger leaf sizes.
+
+Performance (test set):
+
+RMSE: 2666.6 minutes
+
+MAE: 1592.3 minutes
+
+R²: 0.302
+
+WHereas the baseline linear regression model had a test MAE of approximately 2042 minutes and an R² of 0.035. The final model offers a large improvement but we are still a long way from accuratly predicting the outage duration a tasks with a lot of nuance since it is dependent on many variables in and out of the data set.
 
 ## Fairness Analysis
 (text goes here)
