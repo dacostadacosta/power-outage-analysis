@@ -521,19 +521,19 @@ Group X: Outages that start during working hours
 Group Y: Outages that start during off hours
 
 Evaluation Metric:
-We use mean absolute error (MAE), since it measures prediction error in minutes and is consistent with how model performance was evaluated elsewhere in the project.
+We use mean absolute error (MAE), since it measures prediction error in minutes and is consistent with how model performance was evaluated.
 
 Null Hypothesis:
-The model is fair; its error (MAE) is the same for outages that start during working hours and off hours, and any observed difference is due to random chance.
+The model is fair. Its error (MAE) is the same for outages that start during working hours and off hours, and any observed difference is due to randomness.
 
 Alternative Hypothesis:
-The model is unfair; its error (MAE) is higher for off-hour outages than for working-hour outages.
+The model is unfair. Its error (MAE) is higher for off-hour outages than for working-hour outages.
 
 Test Statistic:
 The difference in MAE between off-hour outages and working-hour outages.
 
 Significance Level:
-We use a significance level of α = 0.05.
+We use significance level α = 0.05.
 
 Method:
 We perform a permutation test by keeping the trained model fixed, shuffling the HOUR_TYPE labels, recomputing the MAE difference each time, and comparing the observed difference to the resulting null distribution.
