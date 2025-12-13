@@ -455,7 +455,26 @@ Our prediction task is a regression problem, where the aim is to predict the dur
 We evaluate model performance using mean absolute error (MAE) mainly although we also consier RSME and R^2. MAE is appropriate here because it is easy to interpret in the same units as the response variable and is less sensitive to outliers than mean squared error, which is important given the distribution of duration is very skewed.
 
 ## Baseline Model
-(text goes here)
+
+We begin with a linear regression baseline model to predict outage duration (OUTAGE.DURATION (mins)) using two features.
+
+Features used: CLIMATE.REGION which nominal categorical feature and MONTH as quantitative numeric feature
+
+Encoding:
+CLIMATE.REGION is encoded using one-hot encoding to convert categories into binary indicator variables. MONTH is passed through unchanged as a numeric feature in case there is some sort of seasonal trend that might appear, say perhaps outages increase throughout the year. Transformations are applied using a ColumnTransformer.
+
+Data preprocessing decisions:
+To reduce the influence of extreme outliers, the top 2% of outage durations were trimmed before training. There were 2-3 extremely long outage durations, given the rarity, our model would not generalize well to predict the outliers but they would also skew our model. 
+
+Performance (test set):
+
+RMSE: 3134.4 minutes
+MAE: 2041.1 minutes
+R²: 0.035
+
+Evaluation:
+This model is not good in terms of prediction. It explains very little variance in outage duration and has large prediction errors. This is as expected since the only feature really adding some predictive power is the region, however in each region the variance of outage duration is high. Hemce we need to add more feature to try and lower our errors and improve correlation.
+
 
 ## Final Model
 (text goes here)
