@@ -401,13 +401,24 @@ Outages are not evenly distributed across regions, with the Northeast, South, an
   frameborder="0">
 </iframe>
 
-This plot compares outage duration across different cause categories. While most outage durations are relatively short, certain causes show much larger variability and longer extreme durations, suggesting that the underlying cause of an outage is related to how long it takes to restore power.
+This plot compares outage duration across different cause categories. While most outage durations are relatively short, certain causes show much larger variability and longer extreme durations, showing that the underlying cause of an outage is related to how long it takes to restore power in some cases.
 
 
 
 
 ## Assessment of Missingness
-(text goes here)
+
+###NMAR Analysis
+
+It is possible that the column CAUSE.CATEGORY.DETAIL is NMAR. This column records a more specific description of the outage cause, and its missingness likely depends on the detail itself. In particular, outages with vague of minof causes are less likely to have detailed descriptions recorded and might be omitted entirely, while more severe or common events are more likely to include them. Because the probability of missingness depends on the unobserved value of CAUSE.CATEGORY.DETAIL, the missingness mechanism is at least partly not missing at random.
+
+It would be helpful if we could attain infomration about reporting standard and whether or not they are required for certain outage types or in certain states. Then if there was a correlation between this and the missingness it would be MAR. We go on to test this.
+
+###Missingness Dependency
+
+We tested whether the missingness of CAUSE.CATEGORY.DETAIL depends on other observed variables via permutation tests. For categorical variables, we looked at the distributions of categories when the column is missing versus not missing using total variation distance (TVD). For numerical variables we compared the difference in means between the missing and non-missing groups.
+
+We find strong evidence that missingness depends on CAUSE.CATEGORY, U.S._STATE, and POPULATION since all three tests yield p-values near zero. On the ohter hand there is no statistically significant evidence that missingness depends on PCT_WATER_TOT (%). This suggests that whether cause details are missing is related to outage context and reporting practices likley in each state. As expected it has nothing to do with percentage of water area in that state.
 
 ## Hypothesis Testing
 (text goes here)
