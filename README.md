@@ -654,31 +654,22 @@ Whereas the baseline linear regression model had a test MAE of approximately 204
 
 ## Fairness Analysis
 
-**Group X and Group Y:**
+**Group X**: Outages that start during working hours  
+**Group Y**: Outages that start during off hours
 
-Group X: Outages that start during working hours  
-Group Y: Outages that start during off hours
+**Evaluation Metric:** We use mean absolute error (MAE), since it measures prediction error in minutes and is consistent with how model performance was evaluated.
 
-**Evaluation Metric:**  
-We use mean absolute error (MAE), since it measures prediction error in minutes and is consistent with how model performance was evaluated.
+**Null Hypothesis:** The model is fair. Its error (MAE) is the same for outages that start during working hours and off hours, and any observed difference is due to randomness.
 
-**Null Hypothesis:**  
-The model is fair. Its error (MAE) is the same for outages that start during working hours and off hours, and any observed difference is due to randomness.
+**Alternative Hypothesis:** The model is unfair. Its error (MAE) is higher for off-hour outages than for working-hour outages.
 
-**Alternative Hypothesis:**  
-The model is unfair. Its error (MAE) is higher for off-hour outages than for working-hour outages.
+**Test Statistic:** The difference in MAE between off-hour outages and working-hour outages.
 
-**Test Statistic:**  
-The difference in MAE between off-hour outages and working-hour outages.
+**Significance Level:** We use a significance level of α = 0.05.
 
-**Significance Level:**  
-We use a significance level of α = 0.05.
+**Method:** We perform a permutation test by keeping the trained model fixed, shuffling the `HOUR_TYPE` labels, recomputing the MAE difference each time, and comparing the observed difference to the resulting null distribution.
 
-**Method:**  
-We perform a permutation test by keeping the trained model fixed, shuffling the `HOUR_TYPE` labels, recomputing the MAE difference each time, and comparing the observed difference to the resulting null distribution.
-
-**Results and Conclusion:**  
-The observed difference in MAE between off-hour and working-hour outages is approximately 9.6 minutes, with a p-value of 0.476. Since this p-value is well above the significance level, we fail to reject the null hypothesis. There is no statistical evidence that the model performs worse for outages occurring during off hours.
+**Results and Conclusion:** The observed difference in MAE between off-hour and working-hour outages is approximately 9.6 minutes, with a p-value of 0.476. Since this p-value is well above the significance level, we fail to reject the null hypothesis. There is no statistical evidence that the model performs worse for outages occurring during off hours.
 
 <iframe
   src="assets/fairness_permutation_test.html"
