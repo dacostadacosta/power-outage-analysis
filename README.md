@@ -380,6 +380,16 @@ Below are the first five rows of the cleaned DataFrame:
 </div>
 
 
+### Univariate Analysis
+
+<iframe
+  src="assets/outages_by_climate_region.html"
+  width="800"
+  height="600"
+  frameborder="0">
+</iframe>
+
+This plot shows the number of recorded major power outages across different climate regions. Outages are concentrated in a small number of regions, suggesting that geography and regional climate patterns may play an important role in where major outages occur.
 
 
 
