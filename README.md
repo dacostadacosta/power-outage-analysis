@@ -390,6 +390,20 @@ Below are the first five rows of the cleaned DataFrame:
 </iframe>
 Outages are not evenly distributed across regions, with the Northeast, South, and West have the highest counts. This could mean that regional factors such as climate patterns, infrastructure, etc likely are associated with the frequemcy of outages. This could for example hint that some regions have weaker infrustructer that is perhaps more dated, or the location could get more extreme weather which could cause an outage more often then elsewhere.
 
+###Bivariate Analysis
+
+### Bivariate Analysis
+
+<iframe
+  src="assets/outage_duration_by_cause.html"
+  width="800"
+  height="600"
+  frameborder="0">
+</iframe>
+
+This plot compares outage duration across different cause categories. While most outage durations are relatively short, certain causes show much larger variability and longer extreme durations, suggesting that the underlying cause of an outage is related to how long it takes to restore power.
+
+
 
 
 ## Assessment of Missingness
