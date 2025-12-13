@@ -390,8 +390,6 @@ Below are the first five rows of the cleaned DataFrame:
 </iframe>
 Outages are not evenly distributed across regions, with the Northeast, South, and West have the highest counts. This could mean that regional factors such as climate patterns, infrastructure, etc likely are associated with the frequemcy of outages. This could for example hint that some regions have weaker infrustructer that is perhaps more dated, or the location could get more extreme weather which could cause an outage more often then elsewhere.
 
-###Bivariate Analysis
-
 ### Bivariate Analysis
 
 <iframe
@@ -408,13 +406,13 @@ This plot compares outage duration across different cause categories. While most
 
 ## Assessment of Missingness
 
-###NMAR Analysis
+### NMAR Analysis
 
 It is possible that the column CAUSE.CATEGORY.DETAIL is NMAR. This column records a more specific description of the outage cause, and its missingness likely depends on the detail itself. In particular, outages with vague of minof causes are less likely to have detailed descriptions recorded and might be omitted entirely, while more severe or common events are more likely to include them. Because the probability of missingness depends on the unobserved value of CAUSE.CATEGORY.DETAIL, the missingness mechanism is at least partly not missing at random.
 
 It would be helpful if we could attain infomration about reporting standard and whether or not they are required for certain outage types or in certain states. Then if there was a correlation between this and the missingness it would be MAR. We go on to test this.
 
-###Missingness Dependency
+### Missingness Dependency
 
 We tested whether the missingness of CAUSE.CATEGORY.DETAIL depends on other observed variables via permutation tests. For categorical variables, we looked at the distributions of categories when the column is missing versus not missing using total variation distance (TVD). For numerical variables we compared the difference in means between the missing and non-missing groups.
 
