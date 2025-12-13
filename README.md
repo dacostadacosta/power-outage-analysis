@@ -54,13 +54,331 @@ Since our aim later on is to explore what correlates with the length of an outag
 Below are the first five rows of the cleaned DataFrame:
 
 
-| U.S._STATE   | POSTAL.CODE   | NERC.REGION   | CLIMATE.REGION     |   ANOMALY.LEVEL (numeric) | CLIMATE.CATEGORY   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   HURRICANE.NAMES |   OUTAGE.DURATION (mins) |   DEMAND.LOSS.MW (Megawatt) |   CUSTOMERS.AFFECTED |   RES.PRICE (cents / kilowatt-hour) |   COM.PRICE (cents / kilowatt-hour) |   IND.PRICE (cents / kilowatt-hour) |   TOTAL.PRICE (cents / kilowatt-hour) |   RES.SALES (Megawatt-hour) |   COM.SALES (Megawatt-hour) |   IND.SALES (Megawatt-hour) |   TOTAL.SALES (Megawatt-hour) |   RES.PERCEN (%) |   COM.PERCEN (%) |   IND.PERCEN (%) |   RES.CUSTOMERS |   COM.CUSTOMERS |   IND.CUSTOMERS |   TOTAL.CUSTOMERS |   RES.CUST.PCT (%) |   COM.CUST.PCT (%) |   IND.CUST.PCT (%) |   PC.REALGSP.STATE (USD) |   PC.REALGSP.USA (USD) |   PC.REALGSP.REL (fraction) |   PC.REALGSP.CHANGE (%) |   UTIL.REALGSP (USD) |   TOTAL.REALGSP (USD) |   UTIL.CONTRI (%) |   PI.UTIL.OFUSA (%) |   POPULATION |   POPPCT_URBAN (%) |   POPPCT_UC (%) |   POPDEN_URBAN (persons per square mile) |   POPDEN_UC (persons per square mile) |   POPDEN_RURAL (persons per square mile) |   AREAPCT_URBAN (%) |   AREAPCT_UC (%) |   PCT_LAND (%) |   PCT_WATER_TOT (%) |   PCT_WATER_INLAND (%) | OUTAGE_START_DT     | OUTAGE_RESTORATION_DT   |
-|:-------------|:--------------|:--------------|:-------------------|--------------------------:|:-------------------|:-------------------|:------------------------|------------------:|-------------------------:|----------------------------:|---------------------:|------------------------------------:|------------------------------------:|------------------------------------:|--------------------------------------:|----------------------------:|----------------------------:|----------------------------:|------------------------------:|-----------------:|-----------------:|-----------------:|----------------:|----------------:|----------------:|------------------:|-------------------:|-------------------:|-------------------:|-------------------------:|-----------------------:|----------------------------:|------------------------:|---------------------:|----------------------:|------------------:|--------------------:|-------------:|-------------------:|----------------:|-----------------------------------------:|--------------------------------------:|-----------------------------------------:|--------------------:|-----------------:|---------------:|--------------------:|-----------------------:|:--------------------|:------------------------|
-| Minnesota    | MN            | MRO           | East North Central |                      -0.3 | normal             | severe weather     | <NA>                    |               nan |                     3060 |                         nan |                70000 |                               11.6  |                                9.18 |                                6.81 |                                  9.28 |                     2332915 |                     2114774 |                     2113291 |                       6562520 |          35.5491 |          32.225  |          32.2024 |         2308736 |          276286 |           10673 |           2595696 |            88.9448 |            10.644  |           0.411181 |                    51268 |                  47586 |                     1.07738 |                     1.6 |                 4802 |                274182 |           1.75139 |                 2.2 |      5348119 |              73.27 |           15.28 |                                     2279 |                                1700.5 |                                     18.2 |                2.14 |              0.6 |        91.5927 |             8.40733 |                5.47874 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00     |
-| Minnesota    | MN            | MRO           | East North Central |                      -0.1 | normal             | intentional attack | vandalism               |               nan |                        1 |                         nan |                  nan |                               12.12 |                                9.71 |                                6.49 |                                  9.28 |                     1586986 |                     1807756 |                     1887927 |                       5284231 |          30.0325 |          34.2104 |          35.7276 |         2345860 |          284978 |            9898 |           2640737 |            88.8335 |            10.7916 |           0.37482  |                    53499 |                  49091 |                     1.08979 |                     1.9 |                 5226 |                291955 |           1.79    |                 2.2 |      5457125 |              73.27 |           15.28 |                                     2279 |                                1700.5 |                                     18.2 |                2.14 |              0.6 |        91.5927 |             8.40733 |                5.47874 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00     |
-| Minnesota    | MN            | MRO           | East North Central |                      -1.5 | cold               | severe weather     | heavy wind              |               nan |                     3000 |                         nan |                70000 |                               10.87 |                                8.19 |                                6.07 |                                  8.15 |                     1467293 |                     1801683 |                     1951295 |                       5222116 |          28.0977 |          34.501  |          37.366  |         2300291 |          276463 |           10150 |           2586905 |            88.9206 |            10.687  |           0.392361 |                    50447 |                  47287 |                     1.06683 |                     2.7 |                 4571 |                267895 |           1.70627 |                 2.1 |      5310903 |              73.27 |           15.28 |                                     2279 |                                1700.5 |                                     18.2 |                2.14 |              0.6 |        91.5927 |             8.40733 |                5.47874 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00     |
-| Minnesota    | MN            | MRO           | East North Central |                      -0.1 | normal             | severe weather     | thunderstorm            |               nan |                     2550 |                         nan |                68200 |                               11.79 |                                9.25 |                                6.71 |                                  9.19 |                     1851519 |                     1941174 |                     1993026 |                       5787064 |          31.9941 |          33.5433 |          34.4393 |         2317336 |          278466 |           11010 |           2606813 |            88.8954 |            10.6822 |           0.422355 |                    51598 |                  48156 |                     1.07148 |                     0.6 |                 5364 |                277627 |           1.93209 |                 2.2 |      5380443 |              73.27 |           15.28 |                                     2279 |                                1700.5 |                                     18.2 |                2.14 |              0.6 |        91.5927 |             8.40733 |                5.47874 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00     |
-| Minnesota    | MN            | MRO           | East North Central |                       1.2 | warm               | severe weather     | <NA>                    |               nan |                     1740 |                         250 |               250000 |                               13.07 |                               10.16 |                                7.74 |                                 10.43 |                     2028875 |                     2161612 |                     1777937 |                       5970339 |          33.9826 |          36.2059 |          29.7795 |         2374674 |          289044 |            9812 |           2673531 |            88.8216 |            10.8113 |           0.367005 |                    54431 |                  49844 |                     1.09203 |                     1.7 |                 4873 |                292023 |           1.6687  |                 2.2 |      5489594 |              73.27 |           15.28 |                                     2279 |                                1700.5 |                                     18.2 |                2.14 |              0.6 |        91.5927 |             8.40733 |                5.47874 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00     |
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>U.S._STATE</th>
+      <th>POSTAL.CODE</th>
+      <th>NERC.REGION</th>
+      <th>CLIMATE.REGION</th>
+      <th>ANOMALY.LEVEL (numeric)</th>
+      <th>CLIMATE.CATEGORY</th>
+      <th>CAUSE.CATEGORY</th>
+      <th>CAUSE.CATEGORY.DETAIL</th>
+      <th>HURRICANE.NAMES</th>
+      <th>OUTAGE.DURATION (mins)</th>
+      <th>DEMAND.LOSS.MW (Megawatt)</th>
+      <th>CUSTOMERS.AFFECTED</th>
+      <th>RES.PRICE (cents / kilowatt-hour)</th>
+      <th>COM.PRICE (cents / kilowatt-hour)</th>
+      <th>IND.PRICE (cents / kilowatt-hour)</th>
+      <th>TOTAL.PRICE (cents / kilowatt-hour)</th>
+      <th>RES.SALES (Megawatt-hour)</th>
+      <th>COM.SALES (Megawatt-hour)</th>
+      <th>IND.SALES (Megawatt-hour)</th>
+      <th>TOTAL.SALES (Megawatt-hour)</th>
+      <th>RES.PERCEN (%)</th>
+      <th>COM.PERCEN (%)</th>
+      <th>IND.PERCEN (%)</th>
+      <th>RES.CUSTOMERS</th>
+      <th>COM.CUSTOMERS</th>
+      <th>IND.CUSTOMERS</th>
+      <th>TOTAL.CUSTOMERS</th>
+      <th>RES.CUST.PCT (%)</th>
+      <th>COM.CUST.PCT (%)</th>
+      <th>IND.CUST.PCT (%)</th>
+      <th>PC.REALGSP.STATE (USD)</th>
+      <th>PC.REALGSP.USA (USD)</th>
+      <th>PC.REALGSP.REL (fraction)</th>
+      <th>PC.REALGSP.CHANGE (%)</th>
+      <th>UTIL.REALGSP (USD)</th>
+      <th>TOTAL.REALGSP (USD)</th>
+      <th>UTIL.CONTRI (%)</th>
+      <th>PI.UTIL.OFUSA (%)</th>
+      <th>POPULATION</th>
+      <th>POPPCT_URBAN (%)</th>
+      <th>POPPCT_UC (%)</th>
+      <th>POPDEN_URBAN (persons per square mile)</th>
+      <th>POPDEN_UC (persons per square mile)</th>
+      <th>POPDEN_RURAL (persons per square mile)</th>
+      <th>AREAPCT_URBAN (%)</th>
+      <th>AREAPCT_UC (%)</th>
+      <th>PCT_LAND (%)</th>
+      <th>PCT_WATER_TOT (%)</th>
+      <th>PCT_WATER_INLAND (%)</th>
+      <th>OUTAGE_START_DT</th>
+      <th>OUTAGE_RESTORATION_DT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Minnesota</td>
+      <td>MN</td>
+      <td>MRO</td>
+      <td>East North Central</td>
+      <td>-0.3</td>
+      <td>normal</td>
+      <td>severe weather</td>
+      <td>&lt;NA&gt;</td>
+      <td>NaN</td>
+      <td>3060.0</td>
+      <td>NaN</td>
+      <td>70000.0</td>
+      <td>11.6</td>
+      <td>9.18</td>
+      <td>6.81</td>
+      <td>9.28</td>
+      <td>2332915</td>
+      <td>2114774</td>
+      <td>2113291</td>
+      <td>6562520</td>
+      <td>35.549073</td>
+      <td>32.225029</td>
+      <td>32.202431</td>
+      <td>2308736</td>
+      <td>276286</td>
+      <td>10673</td>
+      <td>2595696</td>
+      <td>88.944776</td>
+      <td>10.644005</td>
+      <td>0.411181</td>
+      <td>51268</td>
+      <td>47586</td>
+      <td>1.077376</td>
+      <td>1.6</td>
+      <td>4802</td>
+      <td>274182</td>
+      <td>1.751391</td>
+      <td>2.2</td>
+      <td>5348119</td>
+      <td>73.27</td>
+      <td>15.28</td>
+      <td>2279</td>
+      <td>1700.5</td>
+      <td>18.2</td>
+      <td>2.14</td>
+      <td>0.6</td>
+      <td>91.592666</td>
+      <td>8.407334</td>
+      <td>5.478743</td>
+      <td>2011-07-01 17:00:00</td>
+      <td>2011-07-03 20:00:00</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>MN</td>
+      <td>MRO</td>
+      <td>East North Central</td>
+      <td>-0.1</td>
+      <td>normal</td>
+      <td>intentional attack</td>
+      <td>vandalism</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12.12</td>
+      <td>9.71</td>
+      <td>6.49</td>
+      <td>9.28</td>
+      <td>1586986</td>
+      <td>1807756</td>
+      <td>1887927</td>
+      <td>5284231</td>
+      <td>30.032487</td>
+      <td>34.210389</td>
+      <td>35.727564</td>
+      <td>2345860</td>
+      <td>284978</td>
+      <td>9898</td>
+      <td>2640737</td>
+      <td>88.833534</td>
+      <td>10.791609</td>
+      <td>0.37482</td>
+      <td>53499</td>
+      <td>49091</td>
+      <td>1.089792</td>
+      <td>1.9</td>
+      <td>5226</td>
+      <td>291955</td>
+      <td>1.790002</td>
+      <td>2.2</td>
+      <td>5457125</td>
+      <td>73.27</td>
+      <td>15.28</td>
+      <td>2279</td>
+      <td>1700.5</td>
+      <td>18.2</td>
+      <td>2.14</td>
+      <td>0.6</td>
+      <td>91.592666</td>
+      <td>8.407334</td>
+      <td>5.478743</td>
+      <td>2014-05-11 18:38:00</td>
+      <td>2014-05-11 18:39:00</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>MN</td>
+      <td>MRO</td>
+      <td>East North Central</td>
+      <td>-1.5</td>
+      <td>cold</td>
+      <td>severe weather</td>
+      <td>heavy wind</td>
+      <td>NaN</td>
+      <td>3000.0</td>
+      <td>NaN</td>
+      <td>70000.0</td>
+      <td>10.87</td>
+      <td>8.19</td>
+      <td>6.07</td>
+      <td>8.15</td>
+      <td>1467293</td>
+      <td>1801683</td>
+      <td>1951295</td>
+      <td>5222116</td>
+      <td>28.097672</td>
+      <td>34.501015</td>
+      <td>37.365983</td>
+      <td>2300291</td>
+      <td>276463</td>
+      <td>10150</td>
+      <td>2586905</td>
+      <td>88.920583</td>
+      <td>10.687018</td>
+      <td>0.392361</td>
+      <td>50447</td>
+      <td>47287</td>
+      <td>1.066826</td>
+      <td>2.7</td>
+      <td>4571</td>
+      <td>267895</td>
+      <td>1.706266</td>
+      <td>2.1</td>
+      <td>5310903</td>
+      <td>73.27</td>
+      <td>15.28</td>
+      <td>2279</td>
+      <td>1700.5</td>
+      <td>18.2</td>
+      <td>2.14</td>
+      <td>0.6</td>
+      <td>91.592666</td>
+      <td>8.407334</td>
+      <td>5.478743</td>
+      <td>2010-10-26 20:00:00</td>
+      <td>2010-10-28 22:00:00</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>MN</td>
+      <td>MRO</td>
+      <td>East North Central</td>
+      <td>-0.1</td>
+      <td>normal</td>
+      <td>severe weather</td>
+      <td>thunderstorm</td>
+      <td>NaN</td>
+      <td>2550.0</td>
+      <td>NaN</td>
+      <td>68200.0</td>
+      <td>11.79</td>
+      <td>9.25</td>
+      <td>6.71</td>
+      <td>9.19</td>
+      <td>1851519</td>
+      <td>1941174</td>
+      <td>1993026</td>
+      <td>5787064</td>
+      <td>31.994099</td>
+      <td>33.54333</td>
+      <td>34.439329</td>
+      <td>2317336</td>
+      <td>278466</td>
+      <td>11010</td>
+      <td>2606813</td>
+      <td>88.895368</td>
+      <td>10.682239</td>
+      <td>0.422355</td>
+      <td>51598</td>
+      <td>48156</td>
+      <td>1.071476</td>
+      <td>0.6</td>
+      <td>5364</td>
+      <td>277627</td>
+      <td>1.932089</td>
+      <td>2.2</td>
+      <td>5380443</td>
+      <td>73.27</td>
+      <td>15.28</td>
+      <td>2279</td>
+      <td>1700.5</td>
+      <td>18.2</td>
+      <td>2.14</td>
+      <td>0.6</td>
+      <td>91.592666</td>
+      <td>8.407334</td>
+      <td>5.478743</td>
+      <td>2012-06-19 04:30:00</td>
+      <td>2012-06-20 23:00:00</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>MN</td>
+      <td>MRO</td>
+      <td>East North Central</td>
+      <td>1.2</td>
+      <td>warm</td>
+      <td>severe weather</td>
+      <td>&lt;NA&gt;</td>
+      <td>NaN</td>
+      <td>1740.0</td>
+      <td>250.0</td>
+      <td>250000.0</td>
+      <td>13.07</td>
+      <td>10.16</td>
+      <td>7.74</td>
+      <td>10.43</td>
+      <td>2028875</td>
+      <td>2161612</td>
+      <td>1777937</td>
+      <td>5970339</td>
+      <td>33.982576</td>
+      <td>36.20585</td>
+      <td>29.779498</td>
+      <td>2374674</td>
+      <td>289044</td>
+      <td>9812</td>
+      <td>2673531</td>
+      <td>88.821637</td>
+      <td>10.81132</td>
+      <td>0.367005</td>
+      <td>54431</td>
+      <td>49844</td>
+      <td>1.092027</td>
+      <td>1.7</td>
+      <td>4873</td>
+      <td>292023</td>
+      <td>1.668704</td>
+      <td>2.2</td>
+      <td>5489594</td>
+      <td>73.27</td>
+      <td>15.28</td>
+      <td>2279</td>
+      <td>1700.5</td>
+      <td>18.2</td>
+      <td>2.14</td>
+      <td>0.6</td>
+      <td>91.592666</td>
+      <td>8.407334</td>
+      <td>5.478743</td>
+      <td>2015-07-18 02:00:00</td>
+      <td>2015-07-19 07:00:00</td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 
