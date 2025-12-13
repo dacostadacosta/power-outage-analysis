@@ -540,3 +540,12 @@ We perform a permutation test by keeping the trained model fixed, shuffling the 
 
 Results and Conclusion:
 The observed difference in MAE between off-hour and working-hour outages is approximately 9.6 minutes, with a p-value of 0.476. Since this p-value is well above the significance level, we fail to reject the null hypothesis. There is no statistical evidence that the model performs worse for outages occurring during off hours.
+
+<iframe
+  src="assets/fairness_permutation_test.html"
+  width="800"
+  height="600"
+  frameborder="0">
+</iframe>
+
+This plot shows the null distribution of the MAE difference under random assignment of hour type, and the observed difference falls well within this distribution, suggesting no meaningful performance difference between working-hour and off-hour outages.
